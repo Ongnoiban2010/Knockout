@@ -1,0 +1,18 @@
+<div id="employee_knockout" data-bind="scope:'addempl'">
+    <!-- ko template: getTemplate() --><!-- /ko -->
+</div>
+<script type="text/x-magento-init">
+    {
+        "#employee_knockout": {
+        "Magento_Ui/js/core/app": {
+        "components": {
+        "addempl": {
+        "component": "Dtn_Knockout/js/employee",
+        "template": "Dtn_Knockout/employee",
+        "employees": <?php echo $block->getEmployeeJson(); ?> 
+    }
+}
+}
+}
+}
+</script>

@@ -1,0 +1,56 @@
+<button type="button" data-bind="event: {click: addNewDepartment}">
+	 <span data-bind="i18n: 'Add New Department'"></span>
+</button>
+
+<div id="department-form-popup" style="display: none;">
+	<form method="post" data-bind="submit: save" data-role="save" accept-charset="utf-8">
+		<div class="fieldset _mainForm" data-bind="attr: {'data-hasrequired': $t('* Required Fields')}"> 
+			<input type="hidden" name="entity_id">
+			<div class="field field-name required">
+				<label for="name" class="label"><span data-bind="i18n: 'Name'">Name</span></label>
+				<div class="control">
+					<input type="text" name="name" class="input-text" data-validate="{required:true}">
+				</div>
+			</div>
+
+			<div class="actions-toolbar">
+				<div class="primary">
+					<button type="submit" class="__save">
+						 <span data-bind="i18n: 'Save'">Save</span>
+					</button>
+				</div>
+
+			</div>
+		</div>
+	</form>
+</div>
+
+<table border="1" style="border-collapse: collapse;">
+	<caption>List Employee</caption>
+	<thead>
+		<tr>
+			<th>Id</th>
+			<th>Name</th>
+			<th>Action</th>
+		</tr>
+	</thead>
+	<!-- ko if: totalDepartment().length > 0 -->
+	<tbody data-bind="foreach: totalDepartment()">
+		<tr>
+			<td data-bind="text: entity_id"></td>
+			<td data-bind="text: name"></td>
+			<td>
+				<div class="actions-toolbar">
+					<div class="primary">
+						<button type="button" class="_edit" data-bind="click: $parent.delete.bind($parent)"><span data-bind="i18n: 'Delete'"></span></button>
+					</div>
+					<div class="secondary">
+                        <button type="button" class = "_delete" data-bind="click : $parent.edit.bind($parent)"><span data-bind="i18n: 'Edit'"></span></button>
+                    </div>
+				</div>
+			</td>
+		</tr>
+	</tbody>
+	 <!-- /ko -->
+</table>
+

@@ -1,0 +1,67 @@
+<button type="button" data-bind="event: {click: addNewEmployee}">
+	<span data-bind="i18n: 'Add New Employee'"></span>
+</button>
+
+<div id="employee-form-popup" style="display: none;">
+	<form data-role="save" data-bind="submit: save">
+		<input type="hidden" name="entity_id">
+		<div class="fieldset _mainForm" data-bind="attr: {'data-hasrequired': $t('* Required Fields')}">
+			<div class="field field-email required">
+				<label class="label" for="email"><span data-bind="i18n: 'Email'"></span></label>
+				<div class="control">
+					<input type="text" name="email" class="input-text" id="email" data-validate="{required:true ,'validate-email':true}" />
+				</div>
+			</div>
+
+			<div class="field field-firstname required">
+				<label class="label" for="firstname"><span data-bind="i18n: 'Firstname'"></span></label>
+				<div class="control">
+					<input type="text" name="firstname" class="input-text" id="firstname" data-validate="{required:true}" />
+				</div>
+			</div>
+
+			<div class="field field-lastname required">
+				<label class="label" for="lastname"><span data-bind="i18n: 'Lastname'"></span></label>
+				<div class="control">
+					<input type="text" name="lastname" class="input-text" id="lastname" data-validate="{required:true}" />
+				</div>
+			</div>
+			
+			<div class="actions-toolbar">
+                <div class="primary">
+                    <button type="submit" class="__save"><span data-bind="i18n: 'Save'"></span></button>
+                </div>
+            </div>
+		</div>
+	</form>
+</div>
+
+<table>
+    <thead>
+        <th>ID</th>
+        <th>Email</th>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Action</th>
+    </thead>
+    <!-- ko if: listEmployee().length > 0 -->
+    <tbody data-bind="foreach: listEmployee()">
+        <tr>
+            <td data-bind="text: entity_id"></td>
+            <td data-bind="text: email"></td>
+            <td data-bind="text: firstname"></td>
+            <td data-bind="text: lastname"></td>
+            <td>
+                <div class="actions-toolbar">
+                    <div class="primary">
+                        <button type="button" class = "_edit" data-bind="click : $parent.edit.bind($parent)"><span data-bind="i18n: 'Edit'"></span></button>
+                    </div>
+                    <div class="secondary">
+                        <button type="button" class = "_delete" data-bind="click : $parent.delete.bind($parent)"><span data-bind="i18n: 'Delete'"></span></button>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+    <!-- /ko -->
+</table>

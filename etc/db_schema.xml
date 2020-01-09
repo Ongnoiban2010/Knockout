@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/schema/etc/schema.xsd">
+	<table name="dtn_employee" resource="default" engine="innodb" comment="Dtn Employee">
+		<column name="entity_id" xsi:type="smallint" unsigned="true" nullable="false" identity="true" />
+		<column name="email" xsi:type="varchar" nullable="true" length="255" comment="Email" />
+		<column name="firstname" xsi:type="varchar" nullable="true" length="255" comment="First Name" />
+		<column name="lastname" xsi:type="varchar" nullable="true" length="255" comment="Last Name" />
+		<constraint xsi:type="primary" referenceId="PRIMARY">
+			<column name="entity_id" />
+		</constraint>
+	</table>
+
+	<table name="dtn_department" resource="default" engine="innodb" comment="Dtn Department">
+		<column name="entity_id" xsi:type="smallint" unsigned="true" nullable="false" identity="true" />
+		<column name="name" xsi:type="varchar" nullable="true" length="255" comment="Name" />
+		<constraint xsi:type="primary" referenceId="PRIMARY">
+			<column name="entity_id" />
+		</constraint>
+	</table>
+</schema>

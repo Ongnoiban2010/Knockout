@@ -1,0 +1,17 @@
+<div data-bind="scope:'department'">
+	<!-- ko template: "Dtn_Knockout/department" --><!-- /ko -->
+</div>
+<script type="text/x-magento-init">
+	{
+		"*": {
+		"Magento_Ui/js/core/app": {
+		"components": {
+		"department": {
+		"component": "Dtn_Knockout/js/department",
+		"departments": <?php echo $block->getDepartmentJson();?>
+	}
+}
+}
+}
+}
+</script>
